@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -37,7 +38,24 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $req = (object) request()->validate([
+            'company_id' => 'bail|required|exists:companies,id',
+            'name' => 'bail|required|string',
+            'email' => 'bail|required|email',
+            'image' => 'bail|required|image|mimes:png,jpg,jpeg|max:2048',
+        ]);
+
+        $image = $request->file('image')->store('public/images');
+        $image = url('/storage/' . str_replace('public/', '', $image));
+
+        Employee::create([
+            'company_id' => $req->company_id,
+            'name' => $req->name,
+            'email' => $req->email,
+            'image' => $image,
+        ]);
+
+        return redirect()->route('employee.index');
     }
 
     /**
