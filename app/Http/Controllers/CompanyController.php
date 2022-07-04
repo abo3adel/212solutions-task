@@ -15,7 +15,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return DataTables()->eloquent(Company::query())->toJson();
+        // return DataTables()->eloquent(Company::query())->toJson();
+
+        return view('company.index');
     }
 
     /**
