@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class CompanyController extends Controller
 {
@@ -14,7 +15,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        return DataTables()->eloquent(Company::query())->toJson();
     }
 
     /**
