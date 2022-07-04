@@ -20,8 +20,7 @@
                 $('#companies_table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: '{!! route('
-                    company-list ') !!}',
+                    ajax: '{!! route('company-list') !!}',
                     columns: [{
                             data: 'logo',
                             name: 'logo',
