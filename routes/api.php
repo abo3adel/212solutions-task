@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GetCompaniesList;
+use App\Http\Controllers\GetEmployeeList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,8 +20,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+Route::get("company", GetCompaniesList::class)->name("company-list");
 
-
-Route::get('company', GetCompaniesList::class)->name('company-list');
-
-// Route::resource('employee', EmployeeController::class);
+Route::get("employee", GetEmployeeList::class)->name("employee-list");
