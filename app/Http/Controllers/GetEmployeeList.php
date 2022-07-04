@@ -16,6 +16,8 @@ class GetEmployeeList extends Controller
      */
     public function __invoke(Request $request)
     {
-        return DataTables()->of(Employee::query())->make(true);
+        $query = Employee::with('company')->select('employees.*');
+
+        return DataTables()->of($query)->make(true);
     }
 }
