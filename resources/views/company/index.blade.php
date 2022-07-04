@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="p-5">
-        <table id="table_id" class="display">
+        <table id="companies_table" class="display">
             <thead>
                 <tr>
                     <th>Logo</th>
@@ -17,11 +17,11 @@
     @push('scripts')
         <script>
             $(document).ready(function () {
-                $('#table_id').DataTable({
+                $('#companies_table').DataTable({
                     processing: true,
                     serverSide: true,
                     ajax: '{!! route('
-                    company - list ') !!}',
+                    company-list ') !!}',
                     columns: [{
                             data: 'logo',
                             name: 'logo',
@@ -34,7 +34,7 @@
                         },
                         {
                             data: 'address',
-                            name: 'adress'
+                            name: 'address'
                         },
                     ]
                 });
